@@ -4,103 +4,62 @@ alternando elementos de ambas; (2) tenga método intercalar_multiples(*listas) q
 para varias listas.
 """
 
-class Combinador_Listas:
-
+class CombinadorListas:
     def intercalar(self, lista1, lista2):
         resultado = []
-
-        for i in range(len(lista1)):
-            resultado.append(lista1[i])
-            resultado.append(lista2[i])
-
+        longitud = max(len(lista1), len(lista2))
+        for indice in range(longitud):
+            if indice < len(lista1):
+                resultado.append(lista1[indice])
+            if indice < len(lista2):
+                resultado.append(lista2[indice])
         return resultado
 
     def intercalar_multiples(self, *listas):
-        resultado = []
-
-        for i in range(len(listas[0])):
-
-            for j in range(0, len(listas), 2):
-
-                if j + 1 < len(listas):
-                    parte = self.intercalar(
-                        [listas[j][i]],
-                        [listas[j + 1][i]]
-                    )
-
-                    resultado.extend(parte)
-
-                else:
-                    resultado.append(listas[j][i])
-
+        if not listas:
+            return []
+        resultado = list(listas[0])
+        for indice in range(1, len(listas)):
+            resultado = self.intercalar(resultado, listas[indice])
         return resultado
 
 
-combinador = Combinador_Listas()
-
-lista1 = [1, 2, 3]
-lista2 = ["A", "B", "C"]
-lista3 = [10, 20, 30]
-
-print(combinador.intercalar(lista1, lista2))
-
-print(combinador.intercalar_multiples(
-    lista1,
-    lista2,
-    lista3
-))
+combinador = CombinadorListas()
+print(combinador.intercalar([1, 2], [3, 4],))
+print(combinador.intercalar_multiples([1, 2], [3, 4]))
 
 
 "PRACTICA"
 """
-Ejercicio: OrganizadorNumeros
-Crea una clase llamada OrganizadorNumeros que tenga:
-1. Método combinar(lista1, lista2)
-Debe recibir dos listas de números y alternar sus elementos.
+EJERCICIO 13.1
+ORDEN:
+Crea una clase llamada MezcladorRutas que combine paradas de dos rutas alternadamente.
+También debe permitir combinar más de dos listas de paradas.
 """
 
-class OrganizadorNumeros:
 
-    def combinar(self, lista1, lista2):
+class MezcladorRutas:
+    def mezclar(self, ruta1, ruta2):
         resultado = []
+        longitud = max(len(ruta1), len(ruta2))
 
-        for i in range(len(lista1)):
-            resultado.append(lista1[i])
-            resultado.append(lista2[i])
-
+        for indice in range(longitud):
+            if indice < len(ruta1):
+                resultado.append(ruta1[indice])
+            if indice < len(ruta2):
+                resultado.append(ruta2[indice])
         return resultado
 
-    def combinar_multiples(self, *listas):
-        resultado = []
+    def mezclar_varias(self, *rutas):
+        if len(rutas) == 0:
+            return []
 
-        for i in range(len(listas[0])):
-
-            for j in range(0, len(listas), 2):
-
-                if j + 1 < len(listas):
-                    parte = self.combinar(
-                        [listas[j][i]],
-                        [listas[j + 1][i]]
-                    )
-
-                    resultado.extend(parte)
-
-                else:
-                    resultado.append(listas[j][i])
-
+        resultado = list(rutas[0])
+        for indice in range(1, len(rutas)):
+            resultado = self.mezclar(resultado, rutas[indice])
         return resultado
 
 
-organizador = OrganizadorNumeros()
-
-lista1 = [10, 20, 30]
-lista2 = [1, 2, 3]
-lista3 = [100, 200, 300]
-
-print(organizador.combinar(lista1, lista2))
-
-print(organizador.combinar_multiples(
-    lista1,
-    lista2,
-    lista3
-))
+mezclador = MezcladorRutas()
+print(mezclador.mezclar(["A", "B"], ["C", "D"]))
+print(mezclador.mezclar_varias(["A", "B"], ["C", "D"], ["E"]))

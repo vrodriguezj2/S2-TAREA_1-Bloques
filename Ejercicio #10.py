@@ -28,6 +28,7 @@ class Tareas:
                 self.tareas.remove(tarea)
                 break
 
+
 tareas = Tareas()
 
 tareas.agregar_tarea("Hacer tarea de Python", "alta")
