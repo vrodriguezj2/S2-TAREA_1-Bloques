@@ -69,7 +69,7 @@ class RegistroVentas:
 
             if cantidad >= cantidad_minima:
                 productos.append(producto)
-            return productos
+        return productos
     
     def producto_mas_vendido(self):
         mayor_v = 0
