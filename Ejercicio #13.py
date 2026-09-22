@@ -31,8 +31,6 @@ print(combinador.intercalar_multiples([1, 2], [3, 4]))
 
 "PRACTICA"
 """
-EJERCICIO 13.1
-ORDEN:
 Crea una clase llamada MezcladorRutas que combine paradas de dos rutas alternadamente.
 También debe permitir combinar más de dos listas de paradas.
 """
