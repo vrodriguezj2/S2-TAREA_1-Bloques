@@ -25,9 +25,9 @@ class SelectorRango:
 
 selector = SelectorRango()
 
-print = (selector. crear_rango(1, 10))
+print(selector. crear_rango(1, 10))
 
-print = (selector. elementos_en_multiples_rangos(
+print(selector. elementos_en_multiples_rangos(
     (1, 5),
     (4, 8),
     (7, 10)
@@ -67,4 +67,15 @@ class SelectorRangoPares:
             for numero in numeros:
                 conjunto.add(numero)
 
-        return list(conjunto)    
+        return list(conjunto)   
+
+
+selector = SelectorRangoPares()
+
+print(selector.rango_pares(1, 10))
+
+print(selector.multiples_rangos_pares(
+    (1, 5),
+    (4, 8),
+    (7, 10)
+))
